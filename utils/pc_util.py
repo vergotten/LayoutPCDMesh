@@ -206,26 +206,46 @@ def write_ply(points, filename, text=True):
     el = PlyElement.describe(vertex, 'vertex', comments=['vertices'])
     PlyData([el], text=text).write(filename)
 
+
 def write_ply_color(points, labels, filename, num_classes=None, colormap=pyplot.cm.jet):
     """ Color (N,3) points with labels (N) within range 0 ~ num_classes-1 as OBJ file """
     labels = labels.astype(int)
     N = points.shape[0]
     if num_classes is None:
-        num_classes = np.max(labels)+1
+        num_classes = np.max(labels) + 1
     else:
-        assert(num_classes>np.max(labels))
-    
-    vertex = []
-    #colors = [pyplot.cm.jet(i/float(num_classes)) for i in range(num_classes)]    
-    colors = [colormap(i/float(num_classes)) for i in range(num_classes)]    
+        assert (num_classes > np.max(labels))
+
+    # colors = [pyplot.cm.jet(i/float(num_classes)) for i in range(num_classes)]
+    colors = [colormap(i / float(num_classes)) for i in range(num_classes)]
+
+    fout = open(filename, 'w')
     for i in range(N):
         c = colors[labels[i]]
-        c = [int(x*255) for x in c]
-        vertex.append( (points[i,0],points[i,1],points[i,2],c[0],c[1],c[2]) )
-    vertex = np.array(vertex, dtype=[('x', 'f4'), ('y', 'f4'),('z', 'f4'),('red', 'u1'), ('green', 'u1'),('blue', 'u1')])
-    
-    el = PlyElement.describe(vertex, 'vertex', comments=['vertices'])
-    PlyData([el], text=True).write(filename)
+        c = [int(x * 255) for x in c]
+        fout.write('v %f %f %f %d %d %d\n' % (points[i, 0], points[i, 1], points[i, 2], c[0], c[1], c[2]))
+    fout.close()
+
+# def write_ply_color(points, labels, filename, num_classes=None, colormap=pyplot.cm.jet):
+#     """ Color (N,3) points with labels (N) within range 0 ~ num_classes-1 as OBJ file """
+#     labels = labels.astype(int)
+#     N = points.shape[0]
+#     if num_classes is None:
+#         num_classes = np.max(labels)+1
+#     else:
+#         assert(num_classes>np.max(labels))
+#
+#     vertex = []
+#     #colors = [pyplot.cm.jet(i/float(num_classes)) for i in range(num_classes)]
+#     colors = [colormap(i/float(num_classes)) for i in range(num_classes)]
+#     for i in range(N):
+#         c = colors[labels[i]]
+#         c = [int(x*255) for x in c]
+#         vertex.append( (points[i,0],points[i,1],points[i,2],c[0],c[1],c[2]) )
+#     vertex = np.array(vertex, dtype=[('x', 'f4'), ('y', 'f4'),('z', 'f4'),('red', 'u1'), ('green', 'u1'),('blue', 'u1')])
+#
+#     el = PlyElement.describe(vertex, 'vertex', comments=['vertices'])
+#     PlyData([el], text=True).write(filename)
    
 def write_ply_rgb(points, colors, out_filename, num_classes=None):
     """ Color (N,3) points with RGB colors (N,3) within range [0,255] as OBJ file """
