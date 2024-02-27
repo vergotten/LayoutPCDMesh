@@ -19,6 +19,8 @@ models for 3D object detection tasks on the ScanNet dataset.
 import os
 import datetime
 import numpy as np
+import yaml
+
 from load_scannet_data import export
 
 
