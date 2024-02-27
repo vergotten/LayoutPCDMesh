@@ -2,9 +2,13 @@
 
 **LayoutPCDMesh** is a deep learning project that bridges the gap between point clouds and 3D meshes. By leveraging the power of **PointNet2**, it transforms raw point cloud data into structured 3D representations with extracted layout information.
 
-## Short Description
+LayoutPCDMesh - это инновационное решение для преобразования облаков точек, часто получаемых с помощью лидарных сканеров или датчиков глубины, в подробные 3D-сетки. Оно выходит за рамки простой реконструкции, включая понимание компоновки, что делает его подходящим для таких задач, как архитектурное моделирование, понимание сцены и виртуальная реальность.
+
+## Short Description / Краткое описание
 
 LayoutPCDMesh is an innovative solution for converting point clouds—often obtained from LiDAR scans or depth sensors—into detailed 3D meshes. It goes beyond mere reconstruction by incorporating layout understanding, making it suitable for applications like architectural modeling, scene understanding, and virtual reality.
+
+**LayoutPCDMesh** - это проект глубокого обучения, который сокращает разрыв между облаками точек и 3D-сетками. Используя мощь **PointNet2**, он преобразует необработанные данные облака точек в структурированные 3D-представления с извлеченной информацией о компоновке.
 
 ## Detailed Description
 
