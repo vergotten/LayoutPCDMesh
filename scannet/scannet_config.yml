@@ -1,0 +1,10 @@
+# Root directory of the ScanNet dataset
+data_root: /mnt/f/Datasets/scannet
+
+# Subdirectories within the ScanNet dataset
+meta_data_dir: /mnt/f/Datasets/scannet/meta_data
+scannet_planes_dir: /mnt/f/Datasets/scannet/scannet_planes
+scans_dir: /mnt/f/Datasets/scannet/scans
+scans_transform_dir: /mnt/f/Datasets/scannet/scans_transform
+scannet_train_detection_data_dir: /mnt/f/Datasets/scannet/scannet_train_detection_data
+scannet_train_detection_data_normals_dir: /mnt/f/Datasets/scannet/scannet_train_detection_data_normals
